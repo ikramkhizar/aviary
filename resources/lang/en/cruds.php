@@ -193,6 +193,8 @@ return [
             'male_bird_helper'   => ' ',
             'female_bird'        => 'Female Bird',
             'female_bird_helper' => ' ',
+            'cage_no'            => 'Enter Breeding Cage No',
+            'cage_no_helper'     => ' ',
             'created_at'         => 'Created at',
             'created_at_helper'  => ' ',
             'updated_at'         => 'Updated at',

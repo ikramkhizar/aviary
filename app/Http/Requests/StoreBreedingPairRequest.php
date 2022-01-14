@@ -25,6 +25,10 @@ class StoreBreedingPairRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'cage_no' => [
+                'required',
+                'integer',
+            ],
         ];
     }
 }
