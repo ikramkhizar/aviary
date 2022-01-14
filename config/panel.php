@@ -11,4 +11,5 @@ return [
         'fr' => 'French',
         'es' => 'Spanish',
     ],
+    'registration_default_role' => '2',
 ];
