@@ -17,14 +17,6 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.breedingHistory.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $breedingHistory->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.breedingHistory.fields.clutch_no') }}
                         </th>
                         <td>

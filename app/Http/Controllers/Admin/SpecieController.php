@@ -80,15 +80,6 @@ class SpecieController extends Controller
         return redirect()->route('admin.species.index');
     }
 
-    public function show(Specie $specie)
-    {
-        abort_if(Gate::denies('specie_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $specie->load('bird');
-
-        return view('admin.species.show', compact('specie'));
-    }
-
     public function destroy(Specie $specie)
     {
         abort_if(Gate::denies('specie_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');

@@ -31,21 +31,21 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('birds/destroy', 'BirdController@massDestroy')->name('birds.massDestroy');
     Route::post('birds/media', 'BirdController@storeMedia')->name('birds.storeMedia');
     Route::post('birds/ckmedia', 'BirdController@storeCKEditorImages')->name('birds.storeCKEditorImages');
-    Route::resource('birds', 'BirdController');
+    Route::resource('birds', 'BirdController', ['except' => ['show']]);
 
     // Egg
     Route::delete('eggs/destroy', 'EggController@massDestroy')->name('eggs.massDestroy');
-    Route::resource('eggs', 'EggController');
+    Route::resource('eggs', 'EggController', ['except' => ['show']]);
 
     // Specie
     Route::delete('species/destroy', 'SpecieController@massDestroy')->name('species.massDestroy');
     Route::post('species/media', 'SpecieController@storeMedia')->name('species.storeMedia');
     Route::post('species/ckmedia', 'SpecieController@storeCKEditorImages')->name('species.storeCKEditorImages');
-    Route::resource('species', 'SpecieController');
+    Route::resource('species', 'SpecieController', ['except' => ['show']]);
 
     // Countries
     Route::delete('countries/destroy', 'CountriesController@massDestroy')->name('countries.massDestroy');
-    Route::resource('countries', 'CountriesController');
+    Route::resource('countries', 'CountriesController', ['except' => ['create', 'store', 'show']]);
 
     // User Bird
     Route::delete('user-birds/destroy', 'UserBirdController@massDestroy')->name('user-birds.massDestroy');

@@ -73,15 +73,6 @@ class BirdController extends Controller
         return redirect()->route('admin.birds.index');
     }
 
-    public function show(Bird $bird)
-    {
-        abort_if(Gate::denies('bird_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $bird->load('birdSpecies');
-
-        return view('admin.birds.show', compact('bird'));
-    }
-
     public function destroy(Bird $bird)
     {
         abort_if(Gate::denies('bird_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');

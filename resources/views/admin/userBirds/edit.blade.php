@@ -35,8 +35,8 @@
                 <span class="help-block">{{ trans('cruds.userBird.fields.specie_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="ring_no">{{ trans('cruds.userBird.fields.ring_no') }}</label>
-                <input class="form-control {{ $errors->has('ring_no') ? 'is-invalid' : '' }}" type="text" name="ring_no" id="ring_no" value="{{ old('ring_no', $userBird->ring_no) }}" required>
+                <label for="ring_no">{{ trans('cruds.userBird.fields.ring_no') }}</label>
+                <input class="form-control {{ $errors->has('ring_no') ? 'is-invalid' : '' }}" type="text" name="ring_no" id="ring_no" value="{{ old('ring_no', $userBird->ring_no) }}">
                 @if($errors->has('ring_no'))
                     <div class="invalid-feedback">
                         {{ $errors->first('ring_no') }}

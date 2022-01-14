@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.breedingHistory.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.breedingHistory.fields.clutch_no') }}
                         </th>
                         <th>
@@ -47,9 +44,6 @@
                         <tr data-entry-id="{{ $breedingHistory->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $breedingHistory->id ?? '' }}
                             </td>
                             <td>
                                 {{ $breedingHistory->clutch_no ?? '' }}
