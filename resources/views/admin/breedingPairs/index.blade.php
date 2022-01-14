@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.breedingPair.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.breedingPair.fields.male_bird') }}
                         </th>
                         <th>
@@ -47,9 +44,6 @@
                         <tr data-entry-id="{{ $breedingPair->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $breedingPair->id ?? '' }}
                             </td>
                             <td>
                                 {{ $breedingPair->male_bird->mutation_name ?? '' }}

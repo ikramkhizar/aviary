@@ -17,14 +17,6 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.userBird.fields.id') }}
-                        </th>
-                        <td>
-                            {{ $userBird->id }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.userBird.fields.mutation_name') }}
                         </th>
                         <td>

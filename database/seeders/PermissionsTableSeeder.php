@@ -84,138 +84,118 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 19,
-                'title' => 'bird_show',
-            ],
-            [
-                'id'    => 20,
                 'title' => 'bird_delete',
             ],
             [
-                'id'    => 21,
+                'id'    => 20,
                 'title' => 'bird_access',
             ],
             [
-                'id'    => 22,
+                'id'    => 21,
                 'title' => 'egg_create',
             ],
             [
-                'id'    => 23,
+                'id'    => 22,
                 'title' => 'egg_edit',
             ],
             [
-                'id'    => 24,
-                'title' => 'egg_show',
-            ],
-            [
-                'id'    => 25,
+                'id'    => 23,
                 'title' => 'egg_delete',
             ],
             [
-                'id'    => 26,
+                'id'    => 24,
                 'title' => 'egg_access',
             ],
             [
-                'id'    => 27,
+                'id'    => 25,
                 'title' => 'specie_create',
             ],
             [
-                'id'    => 28,
+                'id'    => 26,
                 'title' => 'specie_edit',
             ],
             [
-                'id'    => 29,
-                'title' => 'specie_show',
-            ],
-            [
-                'id'    => 30,
+                'id'    => 27,
                 'title' => 'specie_delete',
             ],
             [
-                'id'    => 31,
+                'id'    => 28,
                 'title' => 'specie_access',
             ],
             [
-                'id'    => 32,
-                'title' => 'country_create',
-            ],
-            [
-                'id'    => 33,
+                'id'    => 29,
                 'title' => 'country_edit',
             ],
             [
-                'id'    => 34,
-                'title' => 'country_show',
-            ],
-            [
-                'id'    => 35,
+                'id'    => 30,
                 'title' => 'country_delete',
             ],
             [
-                'id'    => 36,
+                'id'    => 31,
                 'title' => 'country_access',
             ],
             [
-                'id'    => 37,
+                'id'    => 32,
                 'title' => 'user_bird_create',
             ],
             [
-                'id'    => 38,
+                'id'    => 33,
                 'title' => 'user_bird_edit',
             ],
             [
-                'id'    => 39,
+                'id'    => 34,
                 'title' => 'user_bird_show',
             ],
             [
-                'id'    => 40,
+                'id'    => 35,
                 'title' => 'user_bird_delete',
             ],
             [
-                'id'    => 41,
+                'id'    => 36,
                 'title' => 'user_bird_access',
             ],
             [
-                'id'    => 42,
+                'id'    => 37,
                 'title' => 'breeding_pair_create',
             ],
             [
-                'id'    => 43,
+                'id'    => 38,
                 'title' => 'breeding_pair_edit',
             ],
             [
-                'id'    => 44,
+                'id'    => 39,
                 'title' => 'breeding_pair_show',
             ],
             [
-                'id'    => 45,
+                'id'    => 40,
                 'title' => 'breeding_pair_delete',
             ],
             [
-                'id'    => 46,
+                'id'    => 41,
                 'title' => 'breeding_pair_access',
             ],
             [
-                'id'    => 47,
+                'id'    => 42,
                 'title' => 'breeding_history_create',
             ],
             [
-                'id'    => 48,
+                'id'    => 43,
                 'title' => 'breeding_history_edit',
             ],
             [
-                'id'    => 49,
+                'id'    => 44,
                 'title' => 'breeding_history_show',
             ],
             [
-                'id'    => 50,
+                'id'    => 45,
                 'title' => 'breeding_history_delete',
             ],
             [
-                'id'    => 51,
+                'id'    => 46,
                 'title' => 'breeding_history_access',
             ],
             [
-                'id'    => 52,
+                'id'    => 47,
                 'title' => 'profile_password_edit',
             ],
         ];

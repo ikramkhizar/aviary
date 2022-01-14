@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.bird.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.bird.fields.name') }}
                         </th>
                         <th>
@@ -43,9 +40,6 @@
 
                             </td>
                             <td>
-                                {{ $bird->id ?? '' }}
-                            </td>
-                            <td>
                                 {{ $bird->name ?? '' }}
                             </td>
                             <td>
@@ -56,11 +50,6 @@
                                 @endif
                             </td>
                             <td>
-                                @can('bird_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.birds.show', $bird->id) }}">
-                                        {{ trans('global.view') }}
-                                    </a>
-                                @endcan
 
                                 @can('bird_edit')
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.birds.edit', $bird->id) }}">
@@ -126,7 +115,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 50,
   });
   let table = $('.datatable-Bird:not(.ajaxTable)').DataTable({ buttons: dtButtons })

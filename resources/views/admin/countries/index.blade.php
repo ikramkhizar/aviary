@@ -1,14 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-@can('country_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.countries.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.country.title_singular') }}
-            </a>
-        </div>
-    </div>
-@endcan
+
 <div class="card">
     <div class="card-header">
         {{ trans('cruds.country.title_singular') }} {{ trans('global.list') }}
@@ -21,9 +13,6 @@
                     <tr>
                         <th width="10">
 
-                        </th>
-                        <th>
-                            {{ trans('cruds.country.fields.id') }}
                         </th>
                         <th>
                             {{ trans('cruds.country.fields.name') }}
@@ -43,20 +32,12 @@
 
                             </td>
                             <td>
-                                {{ $country->id ?? '' }}
-                            </td>
-                            <td>
                                 {{ $country->name ?? '' }}
                             </td>
                             <td>
                                 {{ $country->short_code ?? '' }}
                             </td>
                             <td>
-                                @can('country_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.countries.show', $country->id) }}">
-                                        {{ trans('global.view') }}
-                                    </a>
-                                @endcan
 
                                 @can('country_edit')
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.countries.edit', $country->id) }}">
@@ -122,7 +103,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 50,
   });
   let table = $('.datatable-Country:not(.ajaxTable)').DataTable({ buttons: dtButtons })

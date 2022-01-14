@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.egg.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.egg.fields.name') }}
                         </th>
                         <th>
@@ -40,17 +37,9 @@
 
                             </td>
                             <td>
-                                {{ $egg->id ?? '' }}
-                            </td>
-                            <td>
                                 {{ $egg->name ?? '' }}
                             </td>
                             <td>
-                                @can('egg_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.eggs.show', $egg->id) }}">
-                                        {{ trans('global.view') }}
-                                    </a>
-                                @endcan
 
                                 @can('egg_edit')
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.eggs.edit', $egg->id) }}">
@@ -116,7 +105,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 50,
   });
   let table = $('.datatable-Egg:not(.ajaxTable)').DataTable({ buttons: dtButtons })
