@@ -23,18 +23,13 @@ class UpdateUserBirdRequest extends FormRequest
             ],
             'ring_no' => [
                 'string',
-                'required',
-                'unique:user_birds,ring_no,' . request()->route('user_bird')->id,
+                'nullable',
             ],
             'male_parent' => [
                 'string',
                 'nullable',
             ],
             'female_parent' => [
-                'string',
-                'nullable',
-            ],
-            'cage_no' => [
                 'string',
                 'nullable',
             ],

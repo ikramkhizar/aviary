@@ -50,15 +50,6 @@ class EggController extends Controller
         return redirect()->route('admin.eggs.index');
     }
 
-    public function show(Egg $egg)
-    {
-        abort_if(Gate::denies('egg_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $egg->load('eggTypeBreedingHistories');
-
-        return view('admin.eggs.show', compact('egg'));
-    }
-
     public function destroy(Egg $egg)
     {
         abort_if(Gate::denies('egg_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');

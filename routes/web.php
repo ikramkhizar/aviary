@@ -31,28 +31,29 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('birds/destroy', 'BirdController@massDestroy')->name('birds.massDestroy');
     Route::post('birds/media', 'BirdController@storeMedia')->name('birds.storeMedia');
     Route::post('birds/ckmedia', 'BirdController@storeCKEditorImages')->name('birds.storeCKEditorImages');
-    Route::resource('birds', 'BirdController');
+    Route::resource('birds', 'BirdController', ['except' => ['show']]);
 
     // Egg
     Route::delete('eggs/destroy', 'EggController@massDestroy')->name('eggs.massDestroy');
-    Route::resource('eggs', 'EggController');
+    Route::resource('eggs', 'EggController', ['except' => ['show']]);
 
     // Specie
     Route::delete('species/destroy', 'SpecieController@massDestroy')->name('species.massDestroy');
     Route::post('species/media', 'SpecieController@storeMedia')->name('species.storeMedia');
     Route::post('species/ckmedia', 'SpecieController@storeCKEditorImages')->name('species.storeCKEditorImages');
+
     // Route::resource('species', 'SpecieController');
     Route::get('species','SpecieController@index')->name('species.index');
     Route::get('species/create','SpecieController@create')->name('species.create');
     Route::post('species/store','SpecieController@store')->name('species.store');
-    Route::get('species/{specie}','SpecieController@show')->name('species.show');
+    // Route::get('species/{specie}','SpecieController@show')->name('species.show');
     Route::get('species/{specie}/edit','SpecieController@edit')->name('species.edit');
     Route::put('species/{specie}/update','SpecieController@update')->name('species.update');
     Route::delete('species/{specie}','SpecieController@destroy')->name('species.destroy');
 
     // Countries
     Route::delete('countries/destroy', 'CountriesController@massDestroy')->name('countries.massDestroy');
-    Route::resource('countries', 'CountriesController');
+    Route::resource('countries', 'CountriesController', ['except' => ['create', 'store', 'show']]);
 
     // User Bird
     Route::delete('user-birds/destroy', 'UserBirdController@massDestroy')->name('user-birds.massDestroy');

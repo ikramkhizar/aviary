@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyCountryRequest;
-use App\Http\Requests\StoreCountryRequest;
 use App\Http\Requests\UpdateCountryRequest;
 use App\Models\Country;
 use Gate;
@@ -22,20 +21,6 @@ class CountriesController extends Controller
         return view('admin.countries.index', compact('countries'));
     }
 
-    public function create()
-    {
-        abort_if(Gate::denies('country_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        return view('admin.countries.create');
-    }
-
-    public function store(StoreCountryRequest $request)
-    {
-        $country = Country::create($request->all());
-
-        return redirect()->route('admin.countries.index');
-    }
-
     public function edit(Country $country)
     {
         abort_if(Gate::denies('country_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -48,15 +33,6 @@ class CountriesController extends Controller
         $country->update($request->all());
 
         return redirect()->route('admin.countries.index');
-    }
-
-    public function show(Country $country)
-    {
-        abort_if(Gate::denies('country_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $country->load('countryUsers');
-
-        return view('admin.countries.show', compact('country'));
     }
 
     public function destroy(Country $country)

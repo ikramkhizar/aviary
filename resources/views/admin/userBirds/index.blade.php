@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.userBird.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.userBird.fields.mutation_name') }}
                         </th>
                         <th>
@@ -59,9 +56,6 @@
                         <tr data-entry-id="{{ $userBird->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $userBird->id ?? '' }}
                             </td>
                             <td>
                                 {{ $userBird->mutation_name ?? '' }}
