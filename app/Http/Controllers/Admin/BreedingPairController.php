@@ -27,9 +27,9 @@ class BreedingPairController extends Controller
     {
         abort_if(Gate::denies('breeding_pair_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $male_birds = UserBird::pluck('mutation_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $male_birds = UserBird::where('gender',1)->doesntHave('maleBirdBreedingPairs')->pluck('mutation_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $female_birds = UserBird::pluck('mutation_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $female_birds = UserBird::where('gender',2)->doesntHave('femaleBirdBreedingPairs')->pluck('mutation_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.breedingPairs.create', compact('female_birds', 'male_birds'));
     }
@@ -37,6 +37,16 @@ class BreedingPairController extends Controller
     public function store(StoreBreedingPairRequest $request)
     {
         $breedingPair = BreedingPair::create($request->all());
+
+        $male_bird = UserBird::find($request->male_bird_id);
+        $male_bird->cage_type = 1;
+        $male_bird->cage_no = $request->cage_no;
+        $male_bird->save();
+
+        $female_bird = UserBird::find($request->female_bird_id);
+        $female_bird->cage_type = 1;
+        $female_bird->cage_no = $request->cage_no;
+        $female_bird->save();
 
         return redirect()->route('admin.breeding-pairs.index');
     }
