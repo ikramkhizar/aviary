@@ -15,8 +15,6 @@ class CreateUserBirdsTable extends Migration
             $table->string('gender')->nullable();
             $table->string('male_parent')->nullable();
             $table->string('female_parent')->nullable();
-            $table->string('cage_type')->nullable();
-            $table->string('cage_no')->nullable();
             $table->date('dob')->nullable();
             $table->longText('description')->nullable();
             $table->timestamps();

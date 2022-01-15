@@ -25,6 +25,13 @@ class UpdateBreedingPairRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'cage_no' => [
+                'required',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+                'unique:breeding_pairs,cage_no,' . request()->route('breeding_pair')->id,
+            ],
         ];
     }
 }

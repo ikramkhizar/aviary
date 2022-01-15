@@ -31,6 +31,14 @@
                             {{ $breedingPair->female_bird->mutation_name ?? '' }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.breedingPair.fields.cage_no') }}
+                        </th>
+                        <td>
+                            {{ $breedingPair->cage_no }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

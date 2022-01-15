@@ -25,6 +25,7 @@ class BreedingPair extends Model
     protected $fillable = [
         'male_bird_id',
         'female_bird_id',
+        'cage_no',
         'created_at',
         'updated_at',
         'deleted_at',

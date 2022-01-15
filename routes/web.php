@@ -41,15 +41,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('species/destroy', 'SpecieController@massDestroy')->name('species.massDestroy');
     Route::post('species/media', 'SpecieController@storeMedia')->name('species.storeMedia');
     Route::post('species/ckmedia', 'SpecieController@storeCKEditorImages')->name('species.storeCKEditorImages');
-
-    // Route::resource('species', 'SpecieController');
-    Route::get('species','SpecieController@index')->name('species.index');
-    Route::get('species/create','SpecieController@create')->name('species.create');
-    Route::post('species/store','SpecieController@store')->name('species.store');
-    // Route::get('species/{specie}','SpecieController@show')->name('species.show');
-    Route::get('species/{specie}/edit','SpecieController@edit')->name('species.edit');
-    Route::put('species/{specie}/update','SpecieController@update')->name('species.update');
-    Route::delete('species/{specie}','SpecieController@destroy')->name('species.destroy');
+    Route::resource('species', 'SpecieController', ['except' => ['show']]);
 
     // Countries
     Route::delete('countries/destroy', 'CountriesController@massDestroy')->name('countries.massDestroy');
