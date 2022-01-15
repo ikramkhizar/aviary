@@ -39,7 +39,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="cage_no">{{ trans('cruds.breedingPair.fields.cage_no') }}</label>
-                <input class="form-control {{ $errors->has('cage_no') ? 'is-invalid' : '' }}" type="number" name="cage_no" id="cage_no" value="{{ old('cage_no', '0') }}" step="1" required>
+                <input class="form-control {{ $errors->has('cage_no') ? 'is-invalid' : '' }}" type="number" name="cage_no" id="cage_no" value="{{ old('cage_no', '') }}" step="1" min="1" oninput="validity.valid||(value='');" required>
                 @if($errors->has('cage_no'))
                     <div class="invalid-feedback">
                         {{ $errors->first('cage_no') }}
