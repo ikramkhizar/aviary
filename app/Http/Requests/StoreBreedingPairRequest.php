@@ -26,11 +26,10 @@ class StoreBreedingPairRequest extends FormRequest
                 'integer',
             ],
             'cage_no' => [
-                'required',
+                'nullable',
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
-                'unique:breeding_pairs,cage_no',
             ],
         ];
     }
