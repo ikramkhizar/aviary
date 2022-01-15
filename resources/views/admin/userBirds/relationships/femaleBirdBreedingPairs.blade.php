@@ -130,7 +130,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 5, 'desc' ]],
     pageLength: 50,
   });
   let table = $('.datatable-femaleBirdBreedingPairs:not(.ajaxTable)').DataTable({ buttons: dtButtons })
