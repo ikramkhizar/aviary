@@ -25,15 +25,15 @@
                         <th>
                             {{ trans('cruds.breedingPair.fields.male_bird') }}
                         </th>
-                        <th>
+                        {{-- <th>
                             {{ trans('cruds.userBird.fields.ring_no') }}
-                        </th>
+                        </th> --}}
                         <th>
                             {{ trans('cruds.breedingPair.fields.female_bird') }}
                         </th>
-                        <th>
+                        {{-- <th>
                             {{ trans('cruds.userBird.fields.ring_no') }}
-                        </th>
+                        </th> --}}
                         <th>
                             {{ trans('cruds.breedingPair.fields.cage_no') }}
                         </th>
@@ -49,24 +49,24 @@
 
                             </td>
                             <td>
-                                {{ $breedingPair->male_bird->mutation_name ?? '' }}
+                                {{ $breedingPair->male_bird->mutation_full_name ?? '' }}
                             </td>
-                            <td>
+                           {{--  <td>
                                 {{ $breedingPair->male_bird->ring_no ?? '' }}
-                            </td>
+                            </td> --}}
                             <td>
-                                {{ $breedingPair->female_bird->mutation_name ?? '' }}
+                                {{ $breedingPair->female_bird->mutation_full_name ?? '' }}
                             </td>
-                            <td>
+                            {{-- <td>
                                 {{ $breedingPair->female_bird->ring_no ?? '' }}
-                            </td>
+                            </td> --}}
                             <td>
                                 {{ $breedingPair->cage_no ?? '' }}
                             </td>
                             <td>
                                 @can('breeding_pair_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.breeding-pairs.show', $breedingPair->id) }}">
-                                        {{ trans('global.view') }}
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.breeding-histories.index', $breedingPair->id) }}">
+                                        View Progress
                                     </a>
                                 @endcan
 
@@ -134,7 +134,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 5, 'desc' ]],
+    order: [[ 3, 'asc' ]],
     pageLength: 50,
   });
   let table = $('.datatable-BreedingPair:not(.ajaxTable)').DataTable({ buttons: dtButtons })

@@ -46,7 +46,7 @@
     </div>
 </div>
 
-<div class="card">
+{{-- <div class="card">
     <div class="card-header">
         {{ trans('global.relatedData') }}
     </div>
@@ -62,6 +62,6 @@
             @includeIf('admin.birds.relationships.birdSpecies', ['species' => $bird->birdSpecies])
         </div>
     </div>
-</div>
+</div> --}}
 
 @endsection

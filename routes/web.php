@@ -53,7 +53,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Breeding Pair
     Route::delete('breeding-pairs/destroy', 'BreedingPairController@massDestroy')->name('breeding-pairs.massDestroy');
-    Route::resource('breeding-pairs', 'BreedingPairController');
+    Route::resource('breeding-pairs', 'BreedingPairController', ['except' => ['show']]);
 
     // Breeding History
     Route::delete('breeding-histories/destroy', 'BreedingHistoryController@massDestroy')->name('breeding-histories.massDestroy');

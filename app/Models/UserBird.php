@@ -60,6 +60,11 @@ class UserBird extends Model
         return $this->belongsTo(Specie::class, 'specie_id');
     }
 
+    public function getMutationFullNameAttribute()
+    {
+        return $this->mutation_name ? ($this->ring_no ? $this->mutation_name.' ('.$this->ring_no.')' : $this->mutation_name) : null;
+    }
+
     public function getDobAttribute($value)
     {
         return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;

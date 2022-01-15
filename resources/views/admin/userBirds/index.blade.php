@@ -28,14 +28,20 @@
                         <th>
                             {{ trans('cruds.userBird.fields.specie') }}
                         </th>
-                        <th>
+                        {{-- <th>
                             {{ trans('cruds.userBird.fields.ring_no') }}
-                        </th>
+                        </th> --}}
                         <th>
                             {{ trans('cruds.userBird.fields.gender') }}
                         </th>
                         <th>
-                            {{ trans('cruds.userBird.fields.dob') }}
+                            {{ trans('cruds.userBird.fields.male_parent') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.userBird.fields.female_parent') }}
+                        </th>
+                        <th>
+                            Age
                         </th>
                         <th>
                             &nbsp;
@@ -49,19 +55,25 @@
 
                             </td>
                             <td>
-                                {{ $userBird->mutation_name ?? '' }}
+                                {{ $userBird->mutation_full_name ?? '' }}
                             </td>
                             <td>
                                 {{ $userBird->specie->name ?? '' }}
                             </td>
-                            <td>
+                           {{--  <td>
                                 {{ $userBird->ring_no ?? '' }}
-                            </td>
+                            </td> --}}
                             <td>
                                 {{ App\Models\UserBird::GENDER_RADIO[$userBird->gender] ?? '' }}
                             </td>
                             <td>
-                                {{ $userBird->dob ?? '' }}
+                                {{ $userBird->male_parent ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userBird->female_parent ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userBird->dob != '' ? CommonFunction::get_date_diff($userBird->dob) : '' }}
                             </td>
                             <td>
                                 @can('user_bird_show')

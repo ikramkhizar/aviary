@@ -65,6 +65,14 @@
                     </tr>
                     <tr>
                         <th>
+                            Age
+                        </th>
+                        <td>
+                            {{ $userBird->dob != '' ? CommonFunction::get_date_diff($userBird->dob) : '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.userBird.fields.dob') }}
                         </th>
                         <td>
@@ -90,7 +98,7 @@
     </div>
 </div>
 
-<div class="card">
+{{-- <div class="card">
     <div class="card-header">
         {{ trans('global.relatedData') }}
     </div>
@@ -114,6 +122,6 @@
             @includeIf('admin.userBirds.relationships.femaleBirdBreedingPairs', ['breedingPairs' => $userBird->femaleBirdBreedingPairs])
         </div>
     </div>
-</div>
+</div> --}}
 
 @endsection
