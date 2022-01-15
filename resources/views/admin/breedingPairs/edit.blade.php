@@ -39,6 +39,16 @@
                 <span class="help-block">{{ trans('cruds.breedingPair.fields.female_bird_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="cage_no">{{ trans('cruds.breedingPair.fields.cage_no') }}</label>
+                <input class="form-control {{ $errors->has('cage_no') ? 'is-invalid' : '' }}" type="number" name="cage_no" id="cage_no" value="{{ old('cage_no', $breedingPair->cage_no) }}" step="1" required>
+                @if($errors->has('cage_no'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('cage_no') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.breedingPair.fields.cage_no_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

@@ -35,16 +35,7 @@
                             {{ trans('cruds.userBird.fields.gender') }}
                         </th>
                         <th>
-                            {{ trans('cruds.userBird.fields.male_parent') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.userBird.fields.female_parent') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.userBird.fields.dob') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.userBird.fields.description') }}
                         </th>
                         <th>
                             &nbsp;
@@ -70,16 +61,7 @@
                                 {{ App\Models\UserBird::GENDER_RADIO[$userBird->gender] ?? '' }}
                             </td>
                             <td>
-                                {{ $userBird->male_parent ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userBird->female_parent ?? '' }}
-                            </td>
-                            <td>
                                 {{ $userBird->dob ?? '' }}
-                            </td>
-                            <td>
-                                {{ $userBird->description ?? '' }}
                             </td>
                             <td>
                                 @can('user_bird_show')

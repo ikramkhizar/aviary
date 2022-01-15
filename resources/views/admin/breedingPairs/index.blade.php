@@ -35,6 +35,9 @@
                             {{ trans('cruds.userBird.fields.ring_no') }}
                         </th>
                         <th>
+                            {{ trans('cruds.breedingPair.fields.cage_no') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -56,6 +59,9 @@
                             </td>
                             <td>
                                 {{ $breedingPair->female_bird->ring_no ?? '' }}
+                            </td>
+                            <td>
+                                {{ $breedingPair->cage_no ?? '' }}
                             </td>
                             <td>
                                 @can('breeding_pair_show')

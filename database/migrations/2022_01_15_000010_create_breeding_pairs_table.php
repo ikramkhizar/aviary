@@ -10,6 +10,7 @@ class CreateBreedingPairsTable extends Migration
     {
         Schema::create('breeding_pairs', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('cage_no')->unique();
             $table->timestamps();
             $table->softDeletes();
         });

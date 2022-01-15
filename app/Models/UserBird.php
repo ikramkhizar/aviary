@@ -15,10 +15,6 @@ class UserBird extends Model
     use MultiTenantModelTrait;
     use HasFactory;
 
-    public const CAGE_TYPE_SELECT = [
-        '1' => 'Breeding Cage',
-    ];
-
     public const GENDER_RADIO = [
         '1' => 'Male',
         '2' => 'Female',
@@ -41,8 +37,6 @@ class UserBird extends Model
         'gender',
         'male_parent',
         'female_parent',
-        'cage_type',
-        'cage_no',
         'dob',
         'description',
         'created_at',
