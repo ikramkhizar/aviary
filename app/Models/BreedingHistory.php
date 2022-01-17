@@ -26,6 +26,7 @@ class BreedingHistory extends Model
     ];
 
     protected $fillable = [
+        'pair_id',
         'clutch_no',
         'egg_type_id',
         'lay_date',
@@ -35,6 +36,16 @@ class BreedingHistory extends Model
         'deleted_at',
         'created_by_id',
     ];
+
+    public function user_bird()
+    {
+        return $this->hasOne(UserBird::class, 'breeding_history_id', 'id');
+    }
+
+    public function breeding_pair()
+    {
+        return $this->belongsTo(BreedingPair::class, 'pair_id');
+    }
 
     public function egg_type()
     {

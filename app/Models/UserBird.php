@@ -42,8 +42,14 @@ class UserBird extends Model
         'created_at',
         'updated_at',
         'deleted_at',
+        'breeding_history_id',
         'created_by_id',
     ];
+
+    public function breeding_history()
+    {
+        return $this->belongsTo(BreedingHistory::class, 'breeding_history_id', 'id');
+    }
 
     public function maleBirdBreedingPairs()
     {

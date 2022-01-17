@@ -18,7 +18,7 @@ class BreedingPairController extends Controller
     {
         abort_if(Gate::denies('breeding_pair_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $breedingPairs = BreedingPair::with(['male_bird', 'female_bird', 'created_by'])->get();
+        $breedingPairs = BreedingPair::with(['male_bird', 'female_bird', 'breeding_history', 'created_by'])->get();
 
         return view('admin.breedingPairs.index', compact('breedingPairs'));
     }
@@ -27,9 +27,9 @@ class BreedingPairController extends Controller
     {
         abort_if(Gate::denies('breeding_pair_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $male_birds = UserBird::where('gender',1)->doesntHave('maleBirdBreedingPairs')->pluck('mutation_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $male_birds = UserBird::where('gender',1)->doesntHave('maleBirdBreedingPairs')->get()->pluck('mutation_full_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $female_birds = UserBird::where('gender',2)->doesntHave('femaleBirdBreedingPairs')->pluck('mutation_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $female_birds = UserBird::where('gender',2)->doesntHave('femaleBirdBreedingPairs')->get()->pluck('mutation_full_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.breedingPairs.create', compact('female_birds', 'male_birds'));
     }
@@ -47,11 +47,11 @@ class BreedingPairController extends Controller
 
         $male_birds = UserBird::where('gender',1)->whereDoesntHave('maleBirdBreedingPairs', function($q) use ($breedingPair) {
             $q->where('male_bird_id','<>',$breedingPair->male_bird_id);
-        })->pluck('mutation_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        })->get()->pluck('mutation_full_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $female_birds = UserBird::where('gender',2)->whereDoesntHave('femaleBirdBreedingPairs', function($q) use ($breedingPair) {
             $q->where('female_bird_id','<>',$breedingPair->female_bird_id);
-        })->pluck('mutation_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        })->get()->pluck('mutation_full_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $breedingPair->load('male_bird', 'female_bird', 'created_by');
 
@@ -65,14 +65,14 @@ class BreedingPairController extends Controller
         return redirect()->route('admin.breeding-pairs.index');
     }
 
-    public function show(BreedingPair $breedingPair)
-    {
-        abort_if(Gate::denies('breeding_pair_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+    // public function show(BreedingPair $breedingPair)
+    // {
+    //     abort_if(Gate::denies('breeding_pair_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $breedingPair->load('male_bird', 'female_bird', 'created_by');
+    //     $breedingPair->load('male_bird', 'female_bird', 'created_by');
 
-        return view('admin.breedingPairs.show', compact('breedingPair'));
-    }
+    //     return view('admin.breedingPairs.show', compact('breedingPair'));
+    // }
 
     public function destroy(BreedingPair $breedingPair)
     {

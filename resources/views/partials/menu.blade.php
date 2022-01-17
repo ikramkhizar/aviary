@@ -100,24 +100,26 @@
         @can('user_bird_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.user-birds.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/user-birds") || request()->is("admin/user-birds/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                    <i class="fa-fw fas fa-dove c-sidebar-nav-icon">
 
                     </i>
-                    {{ trans('cruds.userBird.title') }}
+                    {{-- {{ trans('cruds.userBird.title') }} --}}
+                    Birds
                 </a>
             </li>
         @endcan
         @can('breeding_pair_access')
             <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.breeding-pairs.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/breeding-pairs") || request()->is("admin/breeding-pairs/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                <a href="{{ route("admin.breeding-pairs.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/breeding-pairs") || request()->is("admin/breeding-pairs/*") || request()->is("admin/breeding-histories/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-archive c-sidebar-nav-icon">
 
                     </i>
-                    {{ trans('cruds.breedingPair.title') }}
+                    {{-- {{ trans('cruds.breedingPair.title') }} --}}
+                    Breed Management
                 </a>
             </li>
         @endcan
-        @can('breeding_history_access')
+       {{--  @can('breeding_history_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.breeding-histories.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/breeding-histories") || request()->is("admin/breeding-histories/*") ? "c-active" : "" }}">
                     <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
@@ -126,7 +128,7 @@
                     {{ trans('cruds.breedingHistory.title') }}
                 </a>
             </li>
-        @endcan
+        @endcan --}}
         @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
             @can('profile_password_edit')
                 <li class="c-sidebar-nav-item">

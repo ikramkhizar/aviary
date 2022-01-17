@@ -44,9 +44,9 @@
                 <span class="help-block">{{ trans('cruds.userBird.fields.ring_no_helper') }}</span>
             </div>
             <div class="form-group">
-                <label>{{ trans('cruds.userBird.fields.gender') }}</label>
+                <label>{{ trans('cruds.userBird.fields.gender') }}</label><br>
                 @foreach(App\Models\UserBird::GENDER_RADIO as $key => $label)
-                    <div class="form-check {{ $errors->has('gender') ? 'is-invalid' : '' }}">
+                    <div class="form-check d-inline mr-3 {{ $errors->has('gender') ? 'is-invalid' : '' }}">
                         <input class="form-check-input" type="radio" id="gender_{{ $key }}" name="gender" value="{{ $key }}" {{ old('gender', '0') === (string) $key ? 'checked' : '' }}>
                         <label class="form-check-label" for="gender_{{ $key }}">{{ $label }}</label>
                     </div>

@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.userBird.title') }}
+        {{ trans('global.show') }} Bird
     </div>
 
     <div class="card-body">
@@ -52,7 +52,7 @@
                             {{ trans('cruds.userBird.fields.male_parent') }}
                         </th>
                         <td>
-                            {{ $userBird->male_parent }}
+                            {{ $userBird->male_parent ? $userBird->male_parent : (isset($userBird->breeding_history->breeding_pair->male_bird) ? $userBird->breeding_history->breeding_pair->male_bird->mutation_full_name : '') }}
                         </td>
                     </tr>
                     <tr>
@@ -60,7 +60,7 @@
                             {{ trans('cruds.userBird.fields.female_parent') }}
                         </th>
                         <td>
-                            {{ $userBird->female_parent }}
+                            {{ $userBird->female_parent ? $userBird->female_parent : (isset($userBird->breeding_history->breeding_pair->female_bird) ? $userBird->breeding_history->breeding_pair->female_bird->mutation_full_name : '') }}
                         </td>
                     </tr>
                     <tr>

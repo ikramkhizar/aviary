@@ -42,6 +42,11 @@ class BreedingPair extends Model
         return $this->belongsTo(UserBird::class, 'female_bird_id');
     }
 
+    public function breeding_history()
+    {
+        return $this->hasMany(BreedingHistory::class, 'pair_id');
+    }
+
     public function created_by()
     {
         return $this->belongsTo(User::class, 'created_by_id');

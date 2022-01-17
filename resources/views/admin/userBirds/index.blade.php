@@ -4,14 +4,14 @@
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route('admin.user-birds.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.userBird.title_singular') }}
+                {{ trans('global.add') }} Bird
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.userBird.title_singular') }} {{ trans('global.list') }}
+        Bird {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
@@ -67,10 +67,10 @@
                                 {{ App\Models\UserBird::GENDER_RADIO[$userBird->gender] ?? '' }}
                             </td>
                             <td>
-                                {{ $userBird->male_parent ?? '' }}
+                                {{ $userBird->male_parent ? $userBird->male_parent : (isset($userBird->breeding_history->breeding_pair->male_bird) ? $userBird->breeding_history->breeding_pair->male_bird->mutation_full_name : '') }}
                             </td>
                             <td>
-                                {{ $userBird->female_parent ?? '' }}
+                                {{ $userBird->female_parent ? $userBird->female_parent : (isset($userBird->breeding_history->breeding_pair->female_bird) ? $userBird->breeding_history->breeding_pair->female_bird->mutation_full_name : '') }}
                             </td>
                             <td>
                                 {{ $userBird->dob != '' ? CommonFunction::get_date_diff($userBird->dob) : '' }}

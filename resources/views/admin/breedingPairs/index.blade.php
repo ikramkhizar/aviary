@@ -23,20 +23,18 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.breedingPair.fields.male_bird') }}
+                            Male
                         </th>
-                        {{-- <th>
-                            {{ trans('cruds.userBird.fields.ring_no') }}
-                        </th> --}}
                         <th>
-                            {{ trans('cruds.breedingPair.fields.female_bird') }}
+                            Female
                         </th>
-                        {{-- <th>
-                            {{ trans('cruds.userBird.fields.ring_no') }}
-                        </th> --}}
                         <th>
                             {{ trans('cruds.breedingPair.fields.cage_no') }}
                         </th>
+                        <th>Clutch</th>
+                        <th>No of Eggs</th>
+                        <th>Hatched</th>
+                        <th>Unhatched</th>
                         <th>
                             &nbsp;
                         </th>
@@ -45,24 +43,14 @@
                 <tbody>
                     @foreach($breedingPairs as $key => $breedingPair)
                         <tr data-entry-id="{{ $breedingPair->id }}">
-                            <td>
-
-                            </td>
-                            <td>
-                                {{ $breedingPair->male_bird->mutation_full_name ?? '' }}
-                            </td>
-                           {{--  <td>
-                                {{ $breedingPair->male_bird->ring_no ?? '' }}
-                            </td> --}}
-                            <td>
-                                {{ $breedingPair->female_bird->mutation_full_name ?? '' }}
-                            </td>
-                            {{-- <td>
-                                {{ $breedingPair->female_bird->ring_no ?? '' }}
-                            </td> --}}
-                            <td>
-                                {{ $breedingPair->cage_no ?? '' }}
-                            </td>
+                            <td></td>
+                            <td>{{ $breedingPair->male_bird->mutation_full_name ?? '' }}</td>
+                            <td>{{ $breedingPair->female_bird->mutation_full_name ?? '' }}</td>
+                            <td>{{ $breedingPair->cage_no ?? '' }}</td>
+                            <td>{{ $breedingPair->breeding_history->sortByDesc('clutch_no')->first()->clutch_no ?? '' }}</td>
+                            <td>{{ $breedingPair->breeding_history->count() }}</td>
+                            <td>{{ $breedingPair->breeding_history->where('egg_type_id',5)->count() }}</td>
+                            <td>{{ $breedingPair->breeding_history->where('egg_type_id','<>',5)->count() }}</td>
                             <td>
                                 @can('breeding_pair_show')
                                     <a class="btn btn-xs btn-primary" href="{{ route('admin.breeding-histories.index', $breedingPair->id) }}">

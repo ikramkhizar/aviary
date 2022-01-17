@@ -18,8 +18,8 @@ class UserBirdController extends Controller
     {
         abort_if(Gate::denies('user_bird_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $userBirds = UserBird::with(['specie', 'created_by'])->get();
-
+        $userBirds = UserBird::with(['specie', 'created_by', 'breeding_history'])->get();
+ 
         return view('admin.userBirds.index', compact('userBirds'));
     }
 

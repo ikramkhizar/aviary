@@ -41,7 +41,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('species/destroy', 'SpecieController@massDestroy')->name('species.massDestroy');
     Route::post('species/media', 'SpecieController@storeMedia')->name('species.storeMedia');
     Route::post('species/ckmedia', 'SpecieController@storeCKEditorImages')->name('species.storeCKEditorImages');
-    Route::resource('species', 'SpecieController', ['except' => ['show']]);
+     // Route::resource('species', 'SpecieController');
+    Route::get('species','SpecieController@index')->name('species.index');
+    Route::get('species/create','SpecieController@create')->name('species.create');
+    Route::post('species/store','SpecieController@store')->name('species.store');
+    Route::get('species/{specie}','SpecieController@show')->name('species.show');
+    Route::get('species/{specie}/edit','SpecieController@edit')->name('species.edit');
+    Route::put('species/{specie}/update','SpecieController@update')->name('species.update');
+    Route::delete('species/{specie}','SpecieController@destroy')->name('species.destroy');
 
     // Countries
     Route::delete('countries/destroy', 'CountriesController@massDestroy')->name('countries.massDestroy');
@@ -57,7 +64,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Breeding History
     Route::delete('breeding-histories/destroy', 'BreedingHistoryController@massDestroy')->name('breeding-histories.massDestroy');
-    Route::resource('breeding-histories', 'BreedingHistoryController');
+    Route::get('breeding-histories/{breeding_pair}', 'BreedingHistoryController@index')->name('breeding-histories.index');
+    Route::get('breeding-histories/create/{breeding_pair}', 'BreedingHistoryController@create')->name('breeding-histories.create');
+    Route::get('breeding-histories/show/{breeding_history}', 'BreedingHistoryController@show')->name('breeding-histories.show');
+    Route::resource('breeding-histories', 'BreedingHistoryController', ['except' => ['index','create','show']]);
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

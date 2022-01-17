@@ -8,6 +8,8 @@ $(document).ready(function () {
   $('.date').datetimepicker({
     format: 'DD-MM-YYYY',
     locale: 'en',
+    useCurrent: false,
+    maxDate: new Date().setHours(23,59,59,999),
     icons: {
       up: 'fas fa-chevron-up',
       down: 'fas fa-chevron-down',
