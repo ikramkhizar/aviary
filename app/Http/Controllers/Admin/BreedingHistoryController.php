@@ -21,7 +21,7 @@ class BreedingHistoryController extends Controller
     {
         abort_if(Gate::denies('breeding_history_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $breedingHistories = BreedingHistory::with(['egg_type', 'created_by'])->get();
+        $breedingHistories = BreedingHistory::with(['egg_type', 'created_by'])->where('pair_id',$breedingPair->id)->get();
 
         return view('admin.breedingHistories.index', compact('breedingHistories','breedingPair'));
     }
@@ -102,13 +102,8 @@ class BreedingHistoryController extends Controller
     {
         abort_if(Gate::denies('breeding_history_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $user_bird = UserBird::where('breeding_history_id', $breedingHistory->id)->first();
-
+        UserBird::where('breeding_history_id', $breedingHistory->id)->delete();
         $breedingHistory->delete();
-
-        if ($user_bird) {
-            $user_bird->delete();
-        }
 
         return back();
     }

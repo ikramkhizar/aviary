@@ -68,6 +68,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('breeding-histories/create/{breeding_pair}', 'BreedingHistoryController@create')->name('breeding-histories.create');
     Route::get('breeding-histories/show/{breeding_history}', 'BreedingHistoryController@show')->name('breeding-histories.show');
     Route::resource('breeding-histories', 'BreedingHistoryController', ['except' => ['index','create','show']]);
+
+    // Fostering
+    Route::delete('fosterings/destroy', 'FosteringController@massDestroy')->name('fosterings.massDestroy');
+    Route::resource('fosterings', 'FosteringController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

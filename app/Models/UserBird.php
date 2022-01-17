@@ -53,12 +53,12 @@ class UserBird extends Model
 
     public function maleBirdBreedingPairs()
     {
-        return $this->hasMany(BreedingPair::class, 'male_bird_id', 'id');
+        return $this->hasOne(BreedingPair::class, 'male_bird_id', 'id');
     }
 
     public function femaleBirdBreedingPairs()
     {
-        return $this->hasMany(BreedingPair::class, 'female_bird_id', 'id');
+        return $this->hasOne(BreedingPair::class, 'female_bird_id', 'id');
     }
 
     public function specie()

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyBreedingPairRequest;
 use App\Http\Requests\StoreBreedingPairRequest;
 use App\Http\Requests\UpdateBreedingPairRequest;
+use App\Models\BreedingHistory;
 use App\Models\BreedingPair;
 use App\Models\UserBird;
 use Gate;
@@ -36,7 +37,14 @@ class BreedingPairController extends Controller
 
     public function store(StoreBreedingPairRequest $request)
     {
-        $breedingPair = BreedingPair::create($request->all());
+        $old_pair = BreedingPair::where(['male_bird_id'=>$request->male_bird_id, 'female_bird_id'=>$request->female_bird_id])->withTrashed()->first();
+
+        if ($old_pair) {
+            $old_pair->restore();
+        } else {
+            $breedingPair = BreedingPair::create($request->all());
+        }
+
 
         return redirect()->route('admin.breeding-pairs.index');
     }
@@ -78,6 +86,7 @@ class BreedingPairController extends Controller
     {
         abort_if(Gate::denies('breeding_pair_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        // BreedingHistory::where('pair_id', $breedingPair->id)->delete();
         $breedingPair->delete();
 
         return back();

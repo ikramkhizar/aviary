@@ -47,6 +47,16 @@
                             {{ App\Models\UserBird::GENDER_RADIO[$userBird->gender] ?? '' }}
                         </td>
                     </tr>
+                    @if(isset($userBird->maleBirdBreedingPairs->male_bird) || isset($userBird->femaleBirdBreedingPairs->female_bird))
+                    <tr>
+                        <th>
+                            Partner
+                        </th>
+                        <td>
+                            {{ $userBird->maleBirdBreedingPairs->male_bird->mutation_full_name ?? $userBird->femaleBirdBreedingPairs->female_bird->mutation_full_name}}
+                        </td>
+                    </tr>
+                    @endif
                     <tr>
                         <th>
                             {{ trans('cruds.userBird.fields.male_parent') }}
