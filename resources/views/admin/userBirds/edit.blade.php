@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.edit') }} Bird
+        {{ trans('global.edit') }} {{ trans('cruds.userBird.title_singular') }}
     </div>
 
     <div class="card-body">
@@ -45,9 +45,9 @@
                 <span class="help-block">{{ trans('cruds.userBird.fields.ring_no_helper') }}</span>
             </div>
             <div class="form-group">
-                <label>{{ trans('cruds.userBird.fields.gender') }}</label><br>
+                <label>{{ trans('cruds.userBird.fields.gender') }}</label>
                 @foreach(App\Models\UserBird::GENDER_RADIO as $key => $label)
-                    <div class="form-check d-inline mr-3 {{ $errors->has('gender') ? 'is-invalid' : '' }}">
+                    <div class="form-check {{ $errors->has('gender') ? 'is-invalid' : '' }}">
                         <input class="form-check-input" type="radio" id="gender_{{ $key }}" name="gender" value="{{ $key }}" {{ old('gender', $userBird->gender) === (string) $key ? 'checked' : '' }}>
                         <label class="form-check-label" for="gender_{{ $key }}">{{ $label }}</label>
                     </div>
@@ -59,7 +59,6 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.userBird.fields.gender_helper') }}</span>
             </div>
-            @if($userBird->breeding_history_id == '')
             <div class="form-group">
                 <label for="male_parent">{{ trans('cruds.userBird.fields.male_parent') }}</label>
                 <input class="form-control {{ $errors->has('male_parent') ? 'is-invalid' : '' }}" type="text" name="male_parent" id="male_parent" value="{{ old('male_parent', $userBird->male_parent) }}">
@@ -90,7 +89,6 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.userBird.fields.dob_helper') }}</span>
             </div>
-            @endif
             <div class="form-group">
                 <label for="description">{{ trans('cruds.userBird.fields.description') }}</label>
                 <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{{ old('description', $userBird->description) }}</textarea>

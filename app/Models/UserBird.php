@@ -42,14 +42,8 @@ class UserBird extends Model
         'created_at',
         'updated_at',
         'deleted_at',
-        'breeding_history_id',
         'created_by_id',
     ];
-
-    public function breeding_history()
-    {
-        return $this->belongsTo(BreedingHistory::class, 'breeding_history_id', 'id');
-    }
 
     public function maleBirdBreedingPairs()
     {
@@ -64,11 +58,6 @@ class UserBird extends Model
     public function specie()
     {
         return $this->belongsTo(Specie::class, 'specie_id');
-    }
-
-    public function getMutationFullNameAttribute()
-    {
-        return $this->mutation_name ? ($this->ring_no ? $this->mutation_name.' ('.$this->ring_no.')' : $this->mutation_name) : null;
     }
 
     public function getDobAttribute($value)

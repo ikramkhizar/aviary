@@ -196,6 +196,26 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 47,
+                'title' => 'fostering_create',
+            ],
+            [
+                'id'    => 48,
+                'title' => 'fostering_edit',
+            ],
+            [
+                'id'    => 49,
+                'title' => 'fostering_show',
+            ],
+            [
+                'id'    => 50,
+                'title' => 'fostering_delete',
+            ],
+            [
+                'id'    => 51,
+                'title' => 'fostering_access',
+            ],
+            [
+                'id'    => 52,
                 'title' => 'profile_password_edit',
             ],
         ];

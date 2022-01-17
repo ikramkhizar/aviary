@@ -3,7 +3,7 @@
 @can('breeding_history_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.breeding-histories.create', $breedingPair->id) }}">
+            <a class="btn btn-success" href="{{ route('admin.breeding-histories.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.breedingHistory.title_singular') }}
             </a>
         </div>
@@ -128,7 +128,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 3, 'asc' ]],
+    order: [[ 1, 'desc' ]],
     pageLength: 50,
   });
   let table = $('.datatable-BreedingHistory:not(.ajaxTable)').DataTable({ buttons: dtButtons })

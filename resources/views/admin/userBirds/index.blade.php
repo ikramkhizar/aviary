@@ -4,14 +4,14 @@
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route('admin.user-birds.create') }}">
-                {{ trans('global.add') }} Bird
+                {{ trans('global.add') }} {{ trans('cruds.userBird.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-        Bird {{ trans('global.list') }}
+        {{ trans('cruds.userBird.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
@@ -28,20 +28,14 @@
                         <th>
                             {{ trans('cruds.userBird.fields.specie') }}
                         </th>
-                        {{-- <th>
+                        <th>
                             {{ trans('cruds.userBird.fields.ring_no') }}
-                        </th> --}}
+                        </th>
                         <th>
                             {{ trans('cruds.userBird.fields.gender') }}
                         </th>
                         <th>
-                            {{ trans('cruds.userBird.fields.male_parent') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.userBird.fields.female_parent') }}
-                        </th>
-                        <th>
-                            Age
+                            {{ trans('cruds.userBird.fields.dob') }}
                         </th>
                         <th>
                             &nbsp;
@@ -55,25 +49,19 @@
 
                             </td>
                             <td>
-                                {{ $userBird->mutation_full_name ?? '' }}
+                                {{ $userBird->mutation_name ?? '' }}
                             </td>
                             <td>
                                 {{ $userBird->specie->name ?? '' }}
                             </td>
-                           {{--  <td>
+                            <td>
                                 {{ $userBird->ring_no ?? '' }}
-                            </td> --}}
+                            </td>
                             <td>
                                 {{ App\Models\UserBird::GENDER_RADIO[$userBird->gender] ?? '' }}
                             </td>
                             <td>
-                                {{ $userBird->male_parent ? $userBird->male_parent : (isset($userBird->breeding_history->breeding_pair->male_bird) ? $userBird->breeding_history->breeding_pair->male_bird->mutation_full_name : '') }}
-                            </td>
-                            <td>
-                                {{ $userBird->female_parent ? $userBird->female_parent : (isset($userBird->breeding_history->breeding_pair->female_bird) ? $userBird->breeding_history->breeding_pair->female_bird->mutation_full_name : '') }}
-                            </td>
-                            <td>
-                                {{ $userBird->dob != '' ? CommonFunction::get_date_diff($userBird->dob) : '' }}
+                                {{ $userBird->dob ?? '' }}
                             </td>
                             <td>
                                 @can('user_bird_show')

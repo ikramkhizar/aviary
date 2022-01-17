@@ -34,7 +34,7 @@
     </div>
 </div>
 
-{{-- <div class="card">
+<div class="card">
     <div class="card-header">
         {{ trans('global.relatedData') }}
     </div>
@@ -50,6 +50,6 @@
             @includeIf('admin.eggs.relationships.eggTypeBreedingHistories', ['breedingHistories' => $egg->eggTypeBreedingHistories])
         </div>
     </div>
-</div> --}}
+</div>
 
 @endsection

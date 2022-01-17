@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} Bird
+        {{ trans('global.show') }} {{ trans('cruds.userBird.title') }}
     </div>
 
     <div class="card-body">
@@ -52,7 +52,7 @@
                             {{ trans('cruds.userBird.fields.male_parent') }}
                         </th>
                         <td>
-                            {{ $userBird->male_parent ? $userBird->male_parent : (isset($userBird->breeding_history->breeding_pair->male_bird) ? $userBird->breeding_history->breeding_pair->male_bird->mutation_full_name : '') }}
+                            {{ $userBird->male_parent }}
                         </td>
                     </tr>
                     <tr>
@@ -60,15 +60,7 @@
                             {{ trans('cruds.userBird.fields.female_parent') }}
                         </th>
                         <td>
-                            {{ $userBird->female_parent ? $userBird->female_parent : (isset($userBird->breeding_history->breeding_pair->female_bird) ? $userBird->breeding_history->breeding_pair->female_bird->mutation_full_name : '') }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            Age
-                        </th>
-                        <td>
-                            {{ $userBird->dob != '' ? CommonFunction::get_date_diff($userBird->dob) : '' }}
+                            {{ $userBird->female_parent }}
                         </td>
                     </tr>
                     <tr>
@@ -98,7 +90,7 @@
     </div>
 </div>
 
-{{-- <div class="card">
+<div class="card">
     <div class="card-header">
         {{ trans('global.relatedData') }}
     </div>
@@ -122,6 +114,6 @@
             @includeIf('admin.userBirds.relationships.femaleBirdBreedingPairs', ['breedingPairs' => $userBird->femaleBirdBreedingPairs])
         </div>
     </div>
-</div> --}}
+</div>
 
 @endsection

@@ -1,40 +1,32 @@
-@can('breeding_pair_create')
+@extends('layouts.admin')
+@section('content')
+@can('fostering_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.breeding-pairs.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.breedingPair.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.fosterings.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.fostering.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
-
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.breedingPair.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.fostering.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-maleBirdBreedingPairs">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-Fostering">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.breedingPair.fields.male_bird') }}
+                            {{ trans('cruds.fostering.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.userBird.fields.ring_no') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.breedingPair.fields.female_bird') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.userBird.fields.ring_no') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.breedingPair.fields.cage_no') }}
+                            {{ trans('cruds.fostering.fields.foster_date') }}
                         </th>
                         <th>
                             &nbsp;
@@ -42,41 +34,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($breedingPairs as $key => $breedingPair)
-                        <tr data-entry-id="{{ $breedingPair->id }}">
+                    @foreach($fosterings as $key => $fostering)
+                        <tr data-entry-id="{{ $fostering->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $breedingPair->male_bird->mutation_name ?? '' }}
+                                {{ $fostering->id ?? '' }}
                             </td>
                             <td>
-                                {{ $breedingPair->male_bird->ring_no ?? '' }}
+                                {{ $fostering->foster_date ?? '' }}
                             </td>
                             <td>
-                                {{ $breedingPair->female_bird->mutation_name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $breedingPair->female_bird->ring_no ?? '' }}
-                            </td>
-                            <td>
-                                {{ $breedingPair->cage_no ?? '' }}
-                            </td>
-                            <td>
-                                @can('breeding_pair_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.breeding-pairs.show', $breedingPair->id) }}">
+                                @can('fostering_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.fosterings.show', $fostering->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('breeding_pair_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.breeding-pairs.edit', $breedingPair->id) }}">
+                                @can('fostering_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.fosterings.edit', $fostering->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('breeding_pair_delete')
-                                    <form action="{{ route('admin.breeding-pairs.destroy', $breedingPair->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('fostering_delete')
+                                    <form action="{{ route('admin.fosterings.destroy', $fostering->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -93,16 +76,19 @@
     </div>
 </div>
 
+
+
+@endsection
 @section('scripts')
 @parent
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('breeding_pair_delete')
+@can('fostering_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.breeding-pairs.massDestroy') }}",
+    url: "{{ route('admin.fosterings.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -130,10 +116,10 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 5, 'asc' ]],
+    order: [[ 1, 'asc' ]],
     pageLength: 50,
   });
-  let table = $('.datatable-maleBirdBreedingPairs:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-Fostering:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
