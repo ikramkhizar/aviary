@@ -92,6 +92,24 @@
             </div>
             @endif
             <div class="form-group">
+                <label for="status">Status</label>
+                <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
+                    <option value="1" {{ (old('status') ? old('status') : $userBird->status ?? '') == 1 ? 'selected' : '' }}>Available</option>
+                    <option value="2" {{ (old('status') ? old('status') : $userBird->status ?? '') == 2 ? 'selected' : '' }}>Sold</option>
+                    <option value="3" {{ (old('status') ? old('status') : $userBird->status ?? '') == 3 ? 'selected' : '' }}>Dead</option>
+                    <option value="4" {{ (old('status') ? old('status') : $userBird->status ?? '') == 4 ? 'selected' : '' }}>Missing</option>
+                    {{-- @foreach($species as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('status') ? old('status') : $userBird->status ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach --}}
+                </select>
+                @if($errors->has('status'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('status') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.userBird.fields.specie_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="description">{{ trans('cruds.userBird.fields.description') }}</label>
                 <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{{ old('description', $userBird->description) }}</textarea>
                 @if($errors->has('description'))

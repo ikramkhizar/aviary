@@ -39,12 +39,18 @@ class UserBird extends Model
         'female_parent',
         'dob',
         'description',
+        'status',
         'created_at',
         'updated_at',
         'deleted_at',
         'breeding_history_id',
         'created_by_id',
     ];
+
+    public function scopeActive($query)
+    {
+        return $query->where('status',1);
+    }
 
     public function breeding_history()
     {

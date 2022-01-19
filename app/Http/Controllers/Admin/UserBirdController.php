@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyUserBirdRequest;
 use App\Http\Requests\StoreUserBirdRequest;
 use App\Http\Requests\UpdateUserBirdRequest;
+use App\Models\BreedingPair;
 use App\Models\Specie;
 use App\Models\UserBird;
 use Gate;
@@ -53,6 +54,11 @@ class UserBirdController extends Controller
     public function update(UpdateUserBirdRequest $request, UserBird $userBird)
     {
         $userBird->update($request->all());
+
+        if ($request->status != 1) {
+            BreedingPair::where('male_bird_id',$userBird->id)->orWhere('female_bird_id',$userBird->id)->delete();
+            $userBird->delete();
+        }
 
         return redirect()->route('admin.user-birds.index');
     }

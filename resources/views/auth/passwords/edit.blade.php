@@ -70,6 +70,7 @@
         </div>
     </div>
 </div>
+@if(auth()->user()->roles->contains(1))
 <div class="row">
     <div class="col-md-6">
         <div class="card">
@@ -89,6 +90,7 @@
             </div>
         </div>
     </div>
-
 </div>
+@endif
+
 @endsection

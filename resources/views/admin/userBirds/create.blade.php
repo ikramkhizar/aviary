@@ -35,7 +35,7 @@
             </div>
             <div class="form-group">
                 <label for="ring_no">{{ trans('cruds.userBird.fields.ring_no') }}</label>
-                <input class="form-control {{ $errors->has('ring_no') ? 'is-invalid' : '' }}" type="text" name="ring_no" id="ring_no" value="{{ old('ring_no', '') }}">
+                <input class="form-control {{ $errors->has('ring_no') ? 'is-invalid' : '' }}" type="text" name="ring_no" id="ring_no" value="{{ old('ring_no', '') }}" oninput="this.value = this.value.toUpperCase()">
                 @if($errors->has('ring_no'))
                     <div class="invalid-feedback">
                         {{ $errors->first('ring_no') }}
