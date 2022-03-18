@@ -6,10 +6,6 @@ return [
     'primary_language'    => 'en',
     'available_languages' => [
         'en' => 'English',
-        'de' => 'German',
-        'ru' => 'Russian',
-        'fr' => 'French',
-        'es' => 'Spanish',
     ],
     'registration_default_role' => '2',
 ];

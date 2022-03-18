@@ -12,7 +12,7 @@ class CommonFunction
         return $date->setTimezone($timezone)->format($format);
     }
 
-    public function get_date_diff($date)
+    public static function get_date_diff($date)
     {
         $diff = '';
 

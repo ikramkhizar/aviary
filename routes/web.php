@@ -1,11 +1,5 @@
 <?php
 
-Route::get('/test', function() {
-    // $res = CommonFunction::simple_crypt('simple45Crypt@#.', 'e');
-    $res = CommonFunction::simple_crypt('TXorSEdnZ2ZiekU1R1p0bnh6NWlWQT09', 'd');
-    dd($res);
-});
-
 Route::redirect('/', '/login');
 Route::get('/home', function () {
     if (session('status')) {
@@ -15,7 +9,7 @@ Route::get('/home', function () {
     return redirect()->route('admin.home');
 });
 
-Auth::routes(['reset'=>false]);
+Auth::routes(['reset'=>false,'register'=>false]);
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');
