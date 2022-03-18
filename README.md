@@ -9,7 +9,6 @@ What things you need to install the software.
 * Git.
 * PHP.
 * Composer.
-* Laravel CLI.
 * A webserver like Nginx or Apache.
 
 ### Install
