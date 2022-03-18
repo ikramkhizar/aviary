@@ -40,13 +40,9 @@ $ composer install
 
 - Add your database credentials to the necessary `env` fields
 
-- Migrate the application
+- Migrate & Seed Database
 
-  ```$ php artisan migrate```
-
-- Seed Database
-
-  ```$ php artisan db:seed```
+  ```$ php artisan migrate --seed```
 
 
 ### Run the application
