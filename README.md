@@ -51,7 +51,6 @@ $ composer install
 
 ## Built With
 * [Laravel](https://laravel.com) - The PHP framework for building the API endpoints needed for the application
-* [Vue](https://vuejs.org) - The Progressive JavaScript Framework for building interactive interfaces
 
 ## License
 Please use and re-use however you want.
